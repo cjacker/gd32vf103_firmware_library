@@ -87,7 +87,7 @@ Firmware/RISCV/env_Eclipse/entry.S
 #######################################
 # binaries
 #######################################
-PREFIX = riscv-none-embed-
+PREFIX = riscv-none-elf-
 
 CC = $(PREFIX)gcc
 AS = $(PREFIX)gcc -x assembler-with-cpp
@@ -101,10 +101,10 @@ BIN = $(CP) -O binary -S
 # CFLAGS
 #######################################
 # cpu
-CPU = -march=rv32imac -mabi=ilp32 -msmall-data-limit=8 
+CPU = -march=rv32imac_zicsr -mabi=ilp32 -msmall-data-limit=8 
 
-# For gcc v12 and above
-# CPU = -march=rv32imac_zicsr -mabi=ilp32 -msmall-data-limit=8
+# For gcc version less than v12
+# CPU = -march=rv32imac -mabi=ilp32 -msmall-data-limit=8
 
 # mcu
 MCU = $(CPU) $(FPU) $(FLOAT-ABI)
